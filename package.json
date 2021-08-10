@@ -1,0 +1,25 @@
+{
+  "name": "team-keeper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mjh1985codeman/Team-Keeper.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mjh1985codeman/Team-Keeper/issues"
+  },
+  "homepage": "https://github.com/mjh1985codeman/Team-Keeper#readme",
+  "devDependencies": {
+    "jest": "^27.0.6"
+  }
+}
