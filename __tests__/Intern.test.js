@@ -12,3 +12,17 @@ test("Grabs School from Argument", () => {
   const int = new Intern("Michael", "123", "test@email.com", sch);
   expect(int.school).toBe(sch);
 });
+
+//test for getSchool Method
+test("School argument passed successfully", () => {
+  const sch = "Vandy";
+  const int = new Intern("Michael", "123", "test@email.com", sch);
+  expect(int.getSchool()).toBe(sch);
+});
+
+//test for getRole Method.
+test("Role argument passed successfully", () => {
+  const role = "Intern";
+  const int = new Intern("Michael", "123", "test@email.com", role);
+  expect(int.getRole()).toBe(role);
+});
