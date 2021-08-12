@@ -26,7 +26,7 @@ test("Grabs Email from Argument", () => {
   expect(emp.email).toBe(email);
 });
 
-// tests for method
+// tests for methods
 
 test("Grabs Name from getName()", () => {
   const n = "Michael";
@@ -46,8 +46,8 @@ test("Grabs Email from getEmail()", () => {
   expect(emp.getEmail()).toBe(email);
 });
 
-test("Grabs Email from getRole()", () => {
+test("Grabs Role from getRole()", () => {
   const role = "Employee";
-  const emp = new Employee("Michael", "123", "test@email.com");
+  const emp = new Employee("Michael", "123", "test@email.com", role);
   expect(emp.getRole()).toBe(role);
 });
