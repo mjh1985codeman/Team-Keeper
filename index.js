@@ -149,19 +149,28 @@ const engineerQuestions = () => {
     //After these questions are done prompt if the user wants to add another team member.
   );
 };
-// addAnother function.
+
 const addAnother = () => {
-  return inquirer.prompt([
-    {
-      type: "confirm",
-      name: "confirmation",
-      message: "Do You want to add another team member?",
-    },
-  ]);
-  // HERE I NEED TO BUILD OUT SOME KIND IF ELSE STATEMENT?
-  //SO THAT IF THE ANSWER IS YES, THEN IT WILL PROVIDE A LIST TO SELECT
-  //INTERN OR ENGINEER.  WHICH DEPENDING ON WHICH CHOICE THEY MAKE
-  //IT WILL CALL THE engineerQuestions FUNCTION OR THE internQuestions
+  return inquirer
+    .prompt([
+      {
+        type: "confirm",
+        name: "addAnotherPrompt",
+        message: "Do You want to add another team member?",
+      },
+    ])
+    .then((answers) => {
+      if (answers.addAnotherPrompt === true) {
+        console.log("The user wants to add another Team Member");
+        // NEED TO PUT ANOTHER PROMPT HERE FOR THE USER TO SELECT
+        // IF THEY WANT TO ADD AN INTERN OR AN ENGINEER.
+      } else {
+        console.log("The User is done adding team members");
+        // CALL ON THE GENERATE SITE FUNCTION WHICH HAS NOT BEEN
+        //CREATED YET TAKE EVERYTHING THAT IS IN THE TEAMARRAY AND
+        //PUSH THAT TO THE CARDS ON THE GENERATED HTML PAGE.
+      }
+    });
 };
 
 managerQuestions();
