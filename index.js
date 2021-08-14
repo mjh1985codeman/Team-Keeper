@@ -4,7 +4,8 @@ const Employee = require("./lib/Employee.js"); //Do I need this?
 const Manager = require("./lib/Manager.js");
 const Engineer = require("./lib/Engineer.js");
 const Intern = require("./lib/Intern.js");
-const generateHTML = require("./lib/generateHTML");
+const generateHTML = require("./src/generateHTML");
+const path = require("path");
 // establishing an empty team array that will hold the objects.
 //should this be let?
 const teamArray = [];
