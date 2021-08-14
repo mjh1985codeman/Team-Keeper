@@ -1,10 +1,10 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const generateSite = require("./src/page-template.js");
 const Employee = require("./lib/Employee.js"); //Do I need this?
 const Manager = require("./lib/Manager.js");
 const Engineer = require("./lib/Engineer.js");
 const Intern = require("./lib/Intern.js");
+const generateHTML = require("./lib/generateHTML");
 // establishing an empty team array that will hold the objects.
 //should this be let?
 const teamArray = [];
@@ -177,15 +177,15 @@ const addAnother = () => {
           .then((answers) => {
             if (answers.addTeamMemRole === "Engineer") {
               engineerQuestions();
-            }
-          })
-          .then((answers) => {
-            if (answers.addTeamMemRole === "Intern") {
+            } else if (answers.addTeamMemRole === "Intern") {
               internQuestions();
             }
           });
       } else {
         console.log("The User is done adding team members");
+        //What does my team array look like now?
+        console.log("updated teamArray" + teamArray);
+        generateHTML(teamArray);
         // CALL ON THE GENERATE SITE FUNCTION WHICH HAS NOT BEEN
         //CREATED YET TAKE EVERYTHING THAT IS IN THE TEAMARRAY AND
         //PUSH THAT TO THE CARDS ON THE GENERATED HTML PAGE.
