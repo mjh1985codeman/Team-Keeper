@@ -48,7 +48,7 @@ const managerQuestions = () => {
         //pushing the newManager Object into the teamArray.
         //I NEED TO TEST THIS TO SEE IF IT'S ACTUALLY WORKING.
         teamArray.push(newManager);
-        // console.log("updated team Array" + teamArray);
+        console.log("Team Manager Added!");
       })
       //After these questions are done prompt for the addAnother function.
       .then(addAnother)
@@ -96,6 +96,7 @@ const internQuestions = () => {
         //pushing the newIntern Object into the teamArray.
         //I NEED TO TEST THIS TO SEE IF IT'S ACTUALLY WORKING BUT HOW?!
         teamArray.push(newIntern);
+        console.log("Intern Added!");
         // console.log("updated team Array" + teamArray);
       })
       .then(addAnother)
@@ -143,13 +144,15 @@ const engineerQuestions = () => {
         //pushing the newEmployee Object into the teamArray.
         //I NEED TO TEST THIS TO SEE IF IT'S ACTUALLY WORKING.
         teamArray.push(newEngineer);
+        console.log("Engineer Added!");
         // console.log("updated team Array" + teamArray);
       })
       .then(addAnother)
     //After these questions are done prompt if the user wants to add another team member.
   );
 };
-
+// The addAnother function which prompts the user if they want to add
+// additional team members and if so they choose which one they want to add.
 const addAnother = () => {
   return inquirer
     .prompt([
@@ -162,8 +165,25 @@ const addAnother = () => {
     .then((answers) => {
       if (answers.addAnotherPrompt === true) {
         console.log("The user wants to add another Team Member");
-        // NEED TO PUT ANOTHER PROMPT HERE FOR THE USER TO SELECT
-        // IF THEY WANT TO ADD AN INTERN OR AN ENGINEER.
+        return inquirer
+          .prompt([
+            {
+              type: "list",
+              name: "addTeamMemRole",
+              message: "Is this team member a 'Intern' or 'Engineer'?",
+              choices: ["Engineer", "Intern"],
+            },
+          ])
+          .then((answers) => {
+            if (answers.addTeamMemRole === "Engineer") {
+              engineerQuestions();
+            }
+          })
+          .then((answers) => {
+            if (answers.addTeamMemRole === "Intern") {
+              internQuestions();
+            }
+          });
       } else {
         console.log("The User is done adding team members");
         // CALL ON THE GENERATE SITE FUNCTION WHICH HAS NOT BEEN
