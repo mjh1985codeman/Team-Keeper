@@ -15,47 +15,61 @@ const generateTeam = (teamArray) => {
   teamArray.forEach((element) => {
     if (element instanceof Manager) {
       htmlString += `
-      <div class="card" style="width: 18rem;">
-         <div class="card-header">
+      <div class="card m-2 border border-dark" style="width: 18rem">
+         <div class="card-header font-weight-bold">
          ${element.name}
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">${element.getRole()}</li>
-    <li class="list-group-item">${element.id}</li>
-    <li class="list-group-item">${element.email}</li>
-    <li class="list-group-item">${element.getOfficeNumber()}</li>
+    <li class="list-group-item">Role: ${element.getRole()} <i class="fa fa-coffee" aria-hidden="true"></i>
+    </li>
+    <li class="list-group-item">ID: ${element.id}</li>
+    <li class="list-group-item"><a href="mailto:${element.email}">${
+        element.email
+      }</a></li>
+    <li class="list-group-item">Office Number: ${element.getOfficeNumber()}</li>
   </ul>
 </div>`;
     } else if (element instanceof Engineer) {
-      htmlString += `<div class="card" style="width: 18rem;">
-         <div class="card-header">
-         ${element.name}
-         </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">${element.getRole()}</li>
-    <li class="list-group-item">${element.id}</li>
-    <li class="list-group-item">${element.email}</li>
-    <li class="list-group-item">${element.getGitHub()}</li>
-  </ul>
+      htmlString += `<div class="card m-2 border border-dark" style="width: 18rem">
+      <div class="card-header font-weight-bold">
+      ${element.name}
+</div>
+<ul class="list-group list-group-flush">
+ <li class="list-group-item">Role: ${element.getRole()} <i class="fa fa-desktop" aria-hidden="true"></i>
+ </li>
+ <li class="list-group-item">ID: ${element.id}</li>
+ <li class="list-group-item"><a href="mailto:${element.email}">${
+        element.email
+      }</a></li>
+ <li class="list-group-item">GitHub: ${element.getGitHub()}</li>
+</ul>
 </div>`;
     } else if (element instanceof Intern) {
-      htmlString += `<div class="card" style="width: 18rem;">
-         <div class="card-header">
+      htmlString += `<div class="card m-2 border border-dark" style="width: 18rem">
+      <div class="card-header font-weight-bold">
          ${element.name}
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">${element.getRole()}</li>
-    <li class="list-group-item">${element.id}</li>
-    <li class="list-group-item">${element.email}</li>
-    <li class="list-group-item">${element.getSchool()}</li>
+    <li class="list-group-item">Role: ${element.getRole()} <i class="fa fa-university" aria-hidden="true"></i>
+    </li>
+    <li class="list-group-item">ID: ${element.id}</li>
+    <li class="list-group-item"><a href="mailto:${element.email}">${
+        element.email
+      }</a></li>
+    <li class="list-group-item">School: ${element.getSchool()}</li>
   </ul>
 </div>`;
     } else {
       console.log("I got nothin");
     }
-    //writes the the htmlString variable (the cards) to as the "new-team.html file" in the Dist Folder
+  });
+  //pushing the htmlString to the createHTMLFile Function as the arugment
+  //So that it can use that in the htmlTemplate variable.
+  createHTMLFile(htmlString);
+};
 
-    const htmlTemplate = `<!DOCTYPE html>
+createHTMLFile = function (htmlString) {
+  let htmlTemplate = `<!DOCTYPE html>
     <html lang="en">
       <head>
         <meta charset="UTF-8" />
@@ -74,27 +88,37 @@ const generateTeam = (teamArray) => {
         />
       </head>
       <header>
-        <div class="container">
-          <h1 class="text-center">Team Profile</h1>
-        </div>
-      </header>
-      <body>
-        <div class="card-deck d-flex justify-content-center">
-          <div class="row">
+    <nav
+      class="
+        navbar navbar-light
+        bg-info
+        text-uppercase
+        font-weight-bolder
+        border border-dark
+      "
+    >
+      <a class="navbar-brand">
+        <i class="fa fa-users" aria-hidden="true"></i>
+        Team Profile
+      </a>
+    </nav>
+  </header>
+    <body class="bg-warning">
+      <div class="container-fluid">
+        <div class="justify-content-center">
+          <div class="row d-flex flex-wrap justify-content-center">
             ${htmlString}
           </div>
         </div>
-      </body>
-    </html>`;
-
-    fs.writeFile("./dist/new-team.html", htmlTemplate, function (err) {
-      if (err) {
-        return console.log(err);
-      }
-      console.log(
-        "Success!!!  Checkout the Dist folder to see you team's HTML!"
-      );
-    });
+      </div>
+    </body>
+  </html>`;
+  //Writing the htmlTemplate to the dist folder as the new-team.html file.
+  fs.writeFile("./dist/new-team.html", htmlTemplate, function (err) {
+    if (err) {
+      return console.log(err);
+    }
+    console.log("Success!!!  Checkout the Dist folder to see you team's HTML!");
   });
 };
 
