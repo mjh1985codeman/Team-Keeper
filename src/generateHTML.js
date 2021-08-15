@@ -41,7 +41,9 @@ const generateTeam = (teamArray) => {
  <li class="list-group-item"><a href="mailto:${element.email}">${
         element.email
       }</a></li>
- <li class="list-group-item">GitHub: ${element.getGitHub()}</li>
+      <li class="list-group-item">
+      GitHub: <a href="https://github.com/${element.getGitHub()}">${element.getGitHub()}</a>
+    </li>
 </ul>
 </div>`;
     } else if (element instanceof Intern) {
