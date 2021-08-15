@@ -6,14 +6,13 @@ let htmlString = "";
 
 //function to generate the HTML using the teamArray as the argument
 const generateTeam = (teamArray) => {
-  console.log("This is on the generate HTML!" + teamArray);
-  console.log("We made it to the generate HTML Page!");
   // Pulling out each elements' (Manager, Intern, Engineer that is in the teamArray) key values.
   // This data will be used to create the cards to write to the HTML!!!
   // loops through the team Array and pulls out each Element () and makes them
   // into a card.
   teamArray.forEach((element) => {
     if (element instanceof Manager) {
+      //Pushing this data to the htmlString global variable.
       htmlString += `
       <div class="card m-2 border border-dark" style="width: 18rem">
          <div class="card-header font-weight-bold">
@@ -30,6 +29,7 @@ const generateTeam = (teamArray) => {
   </ul>
 </div>`;
     } else if (element instanceof Engineer) {
+      //Pushing this data to the htmlString global variable.
       htmlString += `<div class="card m-2 border border-dark" style="width: 18rem">
       <div class="card-header font-weight-bold">
       ${element.name}
@@ -47,6 +47,7 @@ const generateTeam = (teamArray) => {
 </ul>
 </div>`;
     } else if (element instanceof Intern) {
+      //Pushing this data to the htmlString global variable.
       htmlString += `<div class="card m-2 border border-dark" style="width: 18rem">
       <div class="card-header font-weight-bold">
          ${element.name}
@@ -65,12 +66,13 @@ const generateTeam = (teamArray) => {
       console.log("I got nothin");
     }
   });
-  //pushing the htmlString to the createHTMLFile Function as the arugment
+  //pushing the htmlString to the createHTMLFile Function as the arugment while calling the function
   //So that it can use that in the htmlTemplate variable.
   createHTMLFile(htmlString);
 };
-
+//Function to create the site using the htmlString that was passed from the generateTeam function.
 createHTMLFile = function (htmlString) {
+  //template literal which recieves the htmlString after it's been updated through the generateTeam function.
   let htmlTemplate = `<!DOCTYPE html>
     <html lang="en">
       <head>
