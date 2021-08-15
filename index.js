@@ -1,13 +1,9 @@
 const inquirer = require("inquirer");
-// const fs = require("fs");
-// const Employee = require("./lib/Employee.js"); //Do I need this?
 const Manager = require("./lib/Manager.js");
 const Engineer = require("./lib/Engineer.js");
 const Intern = require("./lib/Intern.js");
 const generateTeam = require("./src/generateHTML");
-const path = require("path");
 // establishing an empty team array that will hold the objects.
-//should this be let?
 const teamArray = [];
 
 // manager questions function that get prompted as soon as the file is initiated via node.
@@ -45,7 +41,7 @@ const managerQuestions = () => {
           answers.email,
           answers.officeNumber
         );
-        console.log(newManager);
+
         //pushing the newManager Object into the teamArray.
         //I NEED TO TEST THIS TO SEE IF IT'S ACTUALLY WORKING.
         teamArray.push(newManager);
@@ -92,7 +88,6 @@ const internQuestions = () => {
           intAnswers.email,
           intAnswers.school
         );
-        console.log(newIntern);
 
         //pushing the newIntern Object into the teamArray.
         //I NEED TO TEST THIS TO SEE IF IT'S ACTUALLY WORKING BUT HOW?!
@@ -140,13 +135,10 @@ const engineerQuestions = () => {
           engAnswers.email,
           engAnswers.gitHub
         );
-        console.log(newEngineer);
 
         //pushing the newEmployee Object into the teamArray.
-        //I NEED TO TEST THIS TO SEE IF IT'S ACTUALLY WORKING.
         teamArray.push(newEngineer);
         console.log("Engineer Added!");
-        // console.log("updated team Array" + teamArray);
       })
       .then(addAnother)
     //After these questions are done prompt if the user wants to add another team member.
@@ -183,13 +175,8 @@ const addAnother = () => {
             }
           });
       } else {
-        console.log("The User is done adding team members");
-        //What does my team array look like now?
-        console.log("updated teamArray" + teamArray);
         generateTeam(teamArray);
-        // CALL ON THE GENERATE SITE FUNCTION WHICH HAS NOT BEEN
-        //CREATED YET TAKE EVERYTHING THAT IS IN THE TEAMARRAY AND
-        //PUSH THAT TO THE CARDS ON THE GENERATED HTML PAGE.
+        //PUSHES THE UPDATED teamArray TO THE generateTeam function which is on the generateHTML.js file.
       }
     });
 };
