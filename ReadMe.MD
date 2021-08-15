@@ -8,7 +8,7 @@ I WANT to generate a webpage that displays my team's basic info
 SO THAT I have quick access to their emails and GitHub profiles
 
 ## Video of Application in use: 
-Click [Here](https://www.youtube.com/watch?v=Z5dpLvX5L0o) for a video demonstration of this application in use!
+Click [Here](https://www.youtube.com/watch?v=z54Z7--sP0w) for a video demonstration of this application in use!
 (See Dist Folder for an Example of the HTML File that was Generated using this application). 
 
 ## Screenshot of Generated new-team.html file using this application. 
